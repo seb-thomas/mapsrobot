@@ -78,6 +78,28 @@
                     alert('You clicked in this marker');
                 }
             });
+            map.addMarker({
+                lat: 51.500024295706694,
+                lng: -0.117,
+                title: 'Lio',
+                details: {
+                    database_id: 43,
+                    author: 'HPNeo'
+                },
+                click: function(e){
+                    if(console.log)
+                    console.log(e);
+                    alert('You clicked in this marker');
+                }
+            });
+            $.getJSON('media/js/markers.json', function(data){
+                $.each(data.markers, function(i, marker){
+                   map.addMarker({
+                      'lat': (marker.latitude),
+                      'lng': (marker.longitude)
+                    });
+                });
+            });
         });
     </script>
 
