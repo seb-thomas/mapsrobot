@@ -3,8 +3,8 @@ $(document).ready(function(){
     //Set up the map with initial location and zoom level
     map = new GMaps({
         el: '#map',
-        lat: 51.500024295706694,
-        lng: -0.11579284667970313,
+        lat: 51.527145976089415,
+        lng: -0.08147038015136054,
         zoomControl : true,
         zoomControlOpt: {
             style : 'SMALL',
@@ -26,7 +26,7 @@ $(document).ready(function(){
                 lat: marker.latitude,
                 lng: marker.longitude,
                 infoWindow: {
-                    content: marker.title
+                    content: '<h2>' + marker.name + '</h2><p>' + marker.address + '</p>'
                 }
             });
         });
