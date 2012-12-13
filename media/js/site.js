@@ -19,42 +19,15 @@ $(document).ready(function(){
         }
     });
 
-    //Testing adding markers at diff locations
-    map.addMarker({
-        lat: 51.500024295706694,
-        lng: -0.11579284667970313,
-        title: 'Lima',
-        details: {
-            database_id: 42,
-            author: 'HPNeo'
-        },
-        click: function(e){
-            if(console.log)
-            console.log(e);
-            alert('You clicked in this marker');
-        }
-    });
-    map.addMarker({
-        lat: 51.500024295706694,
-        lng: -0.117,
-        title: 'Lio',
-        details: {
-            database_id: 43,
-            author: 'HPNeo'
-        },
-        click: function(e){
-            if(console.log)
-            console.log(e);
-            alert('You clicked in this marker');
-        }
-    });
-
-    //Add another set of markers with JSON
+    //Add markers with JSON
     $.getJSON('media/js/markers.json', function(data){
         $.each(data.markers, function(i, marker){
-           map.addMarker({
-              'lat': (marker.latitude),
-              'lng': (marker.longitude)
+            map.addMarker({
+                lat: marker.latitude,
+                lng: marker.longitude,
+                infoWindow: {
+                    content: marker.title
+                }
             });
         });
     });
@@ -74,6 +47,7 @@ $(document).ready(function(){
                 GMaps.geolocate({
                     success: function(position){
                         map.setCenter(position.coords.latitude, position.coords.longitude);
+                        //Add a marker at that pos
                         map.addMarker({
                             lat: position.coords.latitude,
                             lng: position.coords.longitude,
