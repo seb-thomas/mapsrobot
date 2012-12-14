@@ -1,4 +1,6 @@
 var map;
+var GLOBAL_DATA;
+
 $(document).ready(function(){
     //Set up the map with initial location and zoom level
     map = new GMaps({
@@ -21,44 +23,72 @@ $(document).ready(function(){
 
     //Add markers with JSON
     $.getJSON('media/js/markers.json', function(data){
-        $.each(data.markers, function(i, marker){
-            map.addMarker({
-                id: i,
-                tags: marker.tag,
-                lat: marker.latitude,
-                lng: marker.longitude,
-                infoWindow: {
-                    content: '<h2>' + marker.name + '</h2><p>' + marker.address + '</p>'
-                }
-            });
-        });
+        GLOBAL_DATA = data;
+        loadMarkers();
     });
 
-    //Kind of filtering markers by only loading json objects with if
-    function loadMarkers() {
-        var selected = $(this).attr('id');
-        console.log(selected);
-        //Remove all markers first. 
+    function loadMarkers(e) {
+        e.preventDefault();
         map.removeMarkers();
 
-        $.getJSON('media/js/markers.json', function(data){
-            $.each(data.markers, function(i, marker){
-               if (marker.price === selected) {
-                    map.addMarker({
-                        id: i,
-                        tags: marker.tag,
-                        lat: marker.latitude,
-                        lng: marker.longitude,
-                        infoWindow: {
-                            content: '<h2>' + marker.name + '</h2><p>' + marker.address + '</p>'
-                        }
-                    });
-                }
-            });
+       //var selected = $(this).attr('id');
+        //console.log(selected);
+
+        $.each(GLOBAL_DATA.markers, function(i, marker){
+            if (applyFilter(marker)) {
+                map.addMarker({
+                    lat: marker.latitude,
+                    lng: marker.longitude,
+                    infoWindow: {
+                        content: '<h2>' + marker.name + '</h2><p>' + marker.address + '</p>'
+                    }
+                });
+            }
         });
     }
 
-    $('.price').click(loadMarkers);
+    function applyFilter(){
+        if ($('#budget:checked').val() !== undefined) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //$('.price').click(loadMarkers);
+    $('#filter_form').submit(loadMarkers);
+
+/*
+    //Kind of filtering markers by only loading json objects with if
+    function loadMarkers(e) {
+        e.preventDefault();
+
+        
+
+        //var read_tncs = ($('#id_read_tncs:checked').val() !== undefined);
+        //Remove all markers first. 
+        map.removeMarkers();
+
+    }
+    $.getJSON('media/js/markers.json', function(data){
+        GLOBAL_DATA = data;
+    });
+    function filterMarkers() {
+        $.each(GLOBAL_DATA.markers, function(i, marker){
+           if (marker.price === selected) {
+                map.addMarker({
+                    id: i,
+                    tags: marker.tag,
+                    lat: marker.latitude,
+                    lng: marker.longitude,
+                    infoWindow: {
+                        content: '<h2>' + marker.name + '</h2><p>' + marker.address + '</p>'
+                    }
+                });
+            }
+        });
+    }
+*/
 
     //Add a control, with geolocation event attached
     map.addControl({

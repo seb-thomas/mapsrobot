@@ -4,13 +4,15 @@
     "longitude": -0.08147038015136054, 
     "name":"Meat Mission", 
     "address":"Hoxton Square",
-    "price": "budget"
+    "price": "budget", 
+    "byob": true
 }, { 
     "pin_id": "1",
     "latitude":51.53144023349466, 
     "longitude":-0.0802026567871561, 
     "name":"Troy", 
     "address":"Hoxton St",
-    "price": "mid"
+    "price": "mid",
+    "byob": false
     } ]
 }

@@ -36,9 +36,20 @@
     <div class="wrapper" role="main">
         <div id="map"></div>
         <div class="filters">
-            <p>Price</p>
+           <!-- <p>Price</p>
             <div class="price" id="budget">budget</div>
             <div class="price" id="mid">mid</div>
+            <div class="byob" id="isByob">isByob</div>
+            <div class="byob" id="isNotByob">isNotByob</div>-->
+             <form id="filter_form" action="">
+                <p>Price</p>
+                <input type="checkbox" id="budget" /> <label for="">Budget</label>
+                <input type="checkbox" id="mid" /> <label for="">Mid</label>
+                <p>Byob</p>
+                <input type="checkbox" id="isByob" /> <label for="">isByob</label>
+                <input type="checkbox" id="isNotByob" /> <label for="">isNotByob</label>
+                <input type="submit" value="Filter"/></li>
+            </form> 
         </div>
     </div>
     <footer>
