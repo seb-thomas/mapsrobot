@@ -36,12 +36,14 @@ $(document).ready(function(){
 
     //Kind of filtering markers by only loading json objects with if
     function loadMarkers() {
+        var selected = $(this).attr('id');
+        console.log(selected);
         //Remove all markers first. 
         map.removeMarkers();
 
         $.getJSON('media/js/markers.json', function(data){
             $.each(data.markers, function(i, marker){
-               if (marker.tag === "bar") {
+               if (marker.price === selected) {
                     map.addMarker({
                         id: i,
                         tags: marker.tag,
@@ -55,6 +57,8 @@ $(document).ready(function(){
             });
         });
     }
+
+    $('.price').click(loadMarkers);
 
     //Add a control, with geolocation event attached
     map.addControl({
@@ -88,5 +92,4 @@ $(document).ready(function(){
         }
     });
 
-    $('#one').click(loadMarkers);
 });
