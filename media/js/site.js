@@ -23,6 +23,8 @@ $(document).ready(function(){
     $.getJSON('media/js/markers.json', function(data){
         $.each(data.markers, function(i, marker){
             map.addMarker({
+                id: i,
+                tags: marker.tag,
                 lat: marker.latitude,
                 lng: marker.longitude,
                 infoWindow: {
@@ -31,6 +33,28 @@ $(document).ready(function(){
             });
         });
     });
+
+    //Kind of filtering markers by only loading json objects with if
+    function loadMarkers() {
+        //Remove all markers first. 
+        map.removeMarkers();
+
+        $.getJSON('media/js/markers.json', function(data){
+            $.each(data.markers, function(i, marker){
+               if (marker.tag === "bar") {
+                    map.addMarker({
+                        id: i,
+                        tags: marker.tag,
+                        lat: marker.latitude,
+                        lng: marker.longitude,
+                        infoWindow: {
+                            content: '<h2>' + marker.name + '</h2><p>' + marker.address + '</p>'
+                        }
+                    });
+                }
+            });
+        });
+    }
 
     //Add a control, with geolocation event attached
     map.addControl({
@@ -50,8 +74,7 @@ $(document).ready(function(){
                         //Add a marker at that pos
                         map.addMarker({
                             lat: position.coords.latitude,
-                            lng: position.coords.longitude,
-                            title: 'Lio'
+                            lng: position.coords.longitude
                         });
                     },
                     error: function(error){
@@ -64,4 +87,6 @@ $(document).ready(function(){
             }
         }
     });
+
+    $('#one').click(loadMarkers);
 });
