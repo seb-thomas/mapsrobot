@@ -27,7 +27,7 @@
     </script>
 
 </head>
-<body>
+<body onload="initialize()">
     <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
     <header>
@@ -43,12 +43,12 @@
             <div class="byob" id="isNotByob">isNotByob</div>-->
              <form id="filter_form" action="">
                 <p>Price</p>
-                <input type="checkbox" id="budget" checked/> <label for="">Budget</label>
-                <input type="checkbox" id="mid" checked/> <label for="">Mid</label>
-                <input type="checkbox" id="high" checked/> <label for="">High</label>
+                <input type="checkbox" name="budget" id="budget" checked/> <label for="budget">Budget</label>
+                <input type="checkbox" name="mid" id="mid" checked/> <label for="mid">Mid</label>
+                <input type="checkbox" name="high" id="high" checked/> <label for="high">High</label>
                 <p>Byob</p>
-                <input type="checkbox" id="isByob" checked/> <label for="">isByob</label>
-                <input type="checkbox" id="isNotByob" checked/> <label for="">isNotByob</label>
+                <input type="checkbox" name="isByob" id="isByob" checked/> <label for="isByob">isByob</label>
+                <input type="checkbox" name="isNotByob" id="isNotByob" checked/> <label for="isNotByob">isNotByob</label>
                 <input type="submit" value="Filter"/></li>
             </form> 
         </div>

@@ -26,19 +26,15 @@ $(document).ready(function(){
         GLOBAL_DATA = data;
         loadMarkers();
     });
-
+    
     function loadMarkers(e) {
-        e.preventDefault();
         map.removeMarkers();
-
-       //var selected = $(this).attr('id');
-        //console.log(selected);
-
         $.each(GLOBAL_DATA.markers, function(i, marker){
             if (passesFilter(marker)) {
                 map.addMarker({
                     lat: marker.latitude,
                     lng: marker.longitude,
+                    animation: google.maps.Animation.DROP,
                     infoWindow: {
                         content: '<h2>' + marker.name + '</h2><p>' + marker.address + '</p>'
                     }
@@ -65,44 +61,15 @@ $(document).ready(function(){
         return true;
     }
 
-    $('#filter_form').submit(loadMarkers);
-
-/*
-    //Kind of filtering markers by only loading json objects with if
-    function loadMarkers(e) {
-        e.preventDefault();
-
-        
-
-        //var read_tncs = ($('#id_read_tncs:checked').val() !== undefined);
-        //Remove all markers first. 
-        map.removeMarkers();
-
-    }
-    $.getJSON('media/js/markers.json', function(data){
-        GLOBAL_DATA = data;
+    $('#filter_form').submit(function() {
+        loadMarkers();
+        return false;
     });
-    function filterMarkers() {
-        $.each(GLOBAL_DATA.markers, function(i, marker){
-           if (marker.price === selected) {
-                map.addMarker({
-                    id: i,
-                    tags: marker.tag,
-                    lat: marker.latitude,
-                    lng: marker.longitude,
-                    infoWindow: {
-                        content: '<h2>' + marker.name + '</h2><p>' + marker.address + '</p>'
-                    }
-                });
-            }
-        });
-    }
-*/
 
     //Add a control, with geolocation event attached
     map.addControl({
         position: 'top_right',
-        content: 'Geolocate',
+        content: 'Find me!',
         style: {
             margin: '5px',
             padding: '1px 6px',
@@ -113,11 +80,14 @@ $(document).ready(function(){
             click: function(){
                 GMaps.geolocate({
                     success: function(position){
+                        var me_icon = '/media/img/marker_sprite.png';
+
                         map.setCenter(position.coords.latitude, position.coords.longitude);
                         //Add a marker at that pos
                         map.addMarker({
                             lat: position.coords.latitude,
-                            lng: position.coords.longitude
+                            lng: position.coords.longitude,
+                            icon: me_icon
                         });
                     },
                     error: function(error){
