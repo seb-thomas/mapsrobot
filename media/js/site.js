@@ -70,6 +70,7 @@ $(document).ready(function(){
         return true;
     }
 
+    //Submit ze form, will probably be fired on something else in future 
     $('#filter_form').submit(function() {
         loadMarkers();
         return false;
