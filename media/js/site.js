@@ -48,25 +48,20 @@ $(document).ready(function(){
     }
 
     function passesFilter(marker){
-       // var price_check = $('#'+marker.price);
-        var byob_check = marker.byob;
-        var isByob = false;
-        if ($('#isByob').is(':checked')) {
-            isByob = true;
+        var price_check = $('#'+marker.price);
+        var marker_byob = marker.byob;
+
+        if (!$('#isByob').is(':checked') && marker_byob) {
+            return false;
         }
-       // console.log(price_check);
-        console.log("byob_check is " + byob_check);
-        console.log("isByob is " + isByob);
-/*
+
+        if (!$('#isNotByob').is(':checked') && !marker_byob) {
+            return false;
+        }
+
         if (!price_check.prop('checked')) {
             return false;
-        }*/
-
-        if (isByob != byob_check) {
-            return false;
         }
-
-
         return true;
     }
 

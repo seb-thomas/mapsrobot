@@ -14,5 +14,13 @@
     "address":"Hoxton St",
     "price": "mid",
     "byob": false
+} , { 
+    "pin_id": "1",
+    "latitude":51.53144023349466, 
+    "longitude":-0.085, 
+    "name":"Troy", 
+    "address":"Hoxton St",
+    "price": "high",
+    "byob": false
     } ]
 }
