@@ -21,15 +21,21 @@ $(document).ready(function(){
         }
     });
 
-    //Add markers with JSON
+    //Get the JSON data
     $.getJSON('media/js/markers.json', function(data){
         GLOBAL_DATA = data;
+
+        //JSON badger don't care about doc ready, so we need to call loadMarkers specifically after the json has been got
         loadMarkers();
     });
     
-    function loadMarkers(e) {
+    function loadMarkers() {
+        //Remove all the markers first. 
         map.removeMarkers();
+
+        //Iterate over the javascript object data
         $.each(GLOBAL_DATA.markers, function(i, marker){
+            //Only add the markers that pass the below checks
             if (passesFilter(marker)) {
                 map.addMarker({
                     lat: marker.latitude,
@@ -43,19 +49,22 @@ $(document).ready(function(){
         });
     }
 
+    //Said checks
     function passesFilter(marker){
-        var price_check = $('#'+marker.price);
+        //Set vars for things we are checking
+        var price_checkbox = $('#'+marker.price);
         var marker_byob = marker.byob;
+
+        //Check the states of checkboxes
+        if (!price_checkbox.prop('checked')) {
+            return false;
+        }
 
         if (!$('#isByob').is(':checked') && marker_byob) {
             return false;
         }
 
         if (!$('#isNotByob').is(':checked') && !marker_byob) {
-            return false;
-        }
-
-        if (!price_check.prop('checked')) {
             return false;
         }
         return true;
