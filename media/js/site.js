@@ -35,7 +35,7 @@ $(document).ready(function(){
         //console.log(selected);
 
         $.each(GLOBAL_DATA.markers, function(i, marker){
-            if (applyFilter(marker)) {
+            if (passesFilter(marker)) {
                 map.addMarker({
                     lat: marker.latitude,
                     lng: marker.longitude,
@@ -47,15 +47,16 @@ $(document).ready(function(){
         });
     }
 
-    function applyFilter(){
-        if ($('#budget:checked').val() !== undefined) {
-            return true;
-        }else{
+    function passesFilter(marker){
+        var price_check = $('#'+marker.price);
+        if (!price_check.prop('checked')) {
             return false;
         }
+
+
+        return true;
     }
 
-    //$('.price').click(loadMarkers);
     $('#filter_form').submit(loadMarkers);
 
 /*
