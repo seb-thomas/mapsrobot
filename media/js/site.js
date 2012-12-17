@@ -48,8 +48,21 @@ $(document).ready(function(){
     }
 
     function passesFilter(marker){
-        var price_check = $('#'+marker.price);
+       // var price_check = $('#'+marker.price);
+        var byob_check = marker.byob;
+        var isByob = false;
+        if ($('#isByob').is(':checked')) {
+            isByob = true;
+        }
+       // console.log(price_check);
+        console.log("byob_check is " + byob_check);
+        console.log("isByob is " + isByob);
+/*
         if (!price_check.prop('checked')) {
+            return false;
+        }*/
+
+        if (isByob != byob_check) {
             return false;
         }
 
