@@ -1,5 +1,5 @@
 var map;
-var GLOBAL_DATA;
+var MARKERS;
 
 $(document).ready(function(){
     //Set up the map with initial location and zoom level
@@ -7,6 +7,7 @@ $(document).ready(function(){
         el: '#map',
         lat: 51.527145976089415,
         lng: -0.08147038015136054,
+        zoom: 13,
         zoomControl : true,
         zoomControlOpt: {
             style : 'SMALL',
@@ -23,37 +24,43 @@ $(document).ready(function(){
 
     //Get the JSON data
     $.getJSON('media/js/markers.json', function(data){
-        GLOBAL_DATA = data;
-
+        //Iterate over the javascript object data
+        MARKERS = $.map(data.markers, function(details, i){
+            //Only add the markers that pass the below checks
+            return map.addMarker({
+                lat: details.latitude,
+                lng: details.longitude,
+                animation: google.maps.Animation.DROP,
+                visible: false,
+                details: details,
+                infoWindow: {
+                    content: '<h2>' + details.name + '</h2><p>' + details.address + '</p>'
+                }
+            });
+        });
         //JSON badger don't care about doc ready, so we need to call loadMarkers specifically after the json has been got
         loadMarkers();
     });
     
     function loadMarkers() {
-        //Remove all the markers first. 
-        map.removeMarkers();
-
         //Iterate over the javascript object data
-        $.each(GLOBAL_DATA.markers, function(i, marker){
+       $.each(MARKERS, function(i, marker){
             //Only add the markers that pass the below checks
-            if (passesFilter(marker)) {
-                map.addMarker({
-                    lat: marker.latitude,
-                    lng: marker.longitude,
-                    animation: google.maps.Animation.DROP,
-                    infoWindow: {
-                        content: '<h2>' + marker.name + '</h2><p>' + marker.address + '</p>'
-                    }
-                });
-            }
+            marker.setVisible(
+                passesFilter(marker)
+            );
+            /*Equates to 
+            showMarker = passesFilter(marker); (true/false)
+            marker.setVisible(showMarker); (true/false)
+            */
         });
     }
 
     //Said checks
     function passesFilter(marker){
         //Set vars for things we are checking
-        var price_checkbox = $('#'+marker.price);
-        var marker_byob = marker.byob;
+        var price_checkbox = $('#'+marker.details.price);
+        var marker_byob = marker.details.byob;
 
         //Check the states of checkboxes
         if (!price_checkbox.prop('checked')) {
@@ -91,10 +98,16 @@ $(document).ready(function(){
                 GMaps.geolocate({
                     success: function(position){
                         var me_icon = '/media/img/marker_sprite.png';
-
+/*                        var imHere;
+                        console.log(imHere);
+                        if (imHere) {
+                          map.removeMarker(imHere)
+                          console.log(imHere);
+                        }
+*/
                         map.setCenter(position.coords.latitude, position.coords.longitude);
                         //Add a marker at that pos
-                        map.addMarker({
+                        imHere = map.addMarker({
                             lat: position.coords.latitude,
                             lng: position.coords.longitude,
                             icon: me_icon
