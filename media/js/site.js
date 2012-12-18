@@ -5,6 +5,7 @@ var MARKERS;
 var imHere = false;
 
 $(document).ready(function(){
+
     //Set up the map with initial location and zoom level
     map = new GMaps({
         el: '#map',
@@ -18,6 +19,7 @@ $(document).ready(function(){
         },
         panControl : false,
         streetViewControl : false,
+        overviewMapControl: false,
         mapTypeControl: false
     });
 
@@ -66,6 +68,8 @@ $(document).ready(function(){
             return false;
         }
 
+        //These are different because we're checking for true/false 
+        //rather than against a string as for price
         if (!$('#isByob').hasClass('active') && marker_byob) {
             return false;
         }
@@ -79,6 +83,7 @@ $(document).ready(function(){
     //Submit ze form, will probably be fired on something else in future 
     $('#filter_form').submit(function() {
         loadMarkers();
+        $('#card').removeClass("flipped");
         return false;
     });
 
@@ -119,6 +124,22 @@ $(document).ready(function(){
                       alert("Your browser does not support geolocation");
                     }
                 });
+            }
+        }
+    });
+    //Add a control, with geolocation event attached
+    map.addControl({
+        position: 'top_right',
+        content: 'Flip me!',
+        style: {
+            margin: '5px',
+            padding: '1px 6px',
+            border: 'solid 1px #717B87',
+            background: '#fff'
+        },
+        events: {
+            click: function(){
+                $('#card').addClass("flipped");
             }
         }
     });
