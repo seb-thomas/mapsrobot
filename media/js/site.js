@@ -1,6 +1,9 @@
 var map;
 var MARKERS;
 
+//Define var for geolocation
+var imHere = false;
+
 $(document).ready(function(){
     //Set up the map with initial location and zoom level
     map = new GMaps({
@@ -17,9 +20,6 @@ $(document).ready(function(){
         streetViewControl : true,
         mapTypeControl: false,
         overviewMapControl: false,
-        click: function(e) {
-            console.log('click');
-        }
     });
 
     //Get the JSON data
@@ -98,20 +98,20 @@ $(document).ready(function(){
                 GMaps.geolocate({
                     success: function(position){
                         var me_icon = '/media/img/marker_sprite.png';
-/*                        var imHere;
-                        console.log(imHere);
+
+                        //If there's anything in imHere, remove that marker
                         if (imHere) {
-                          map.removeMarker(imHere)
-                          console.log(imHere);
+                            map.removeMarker(imHere);
                         }
-*/
-                        map.setCenter(position.coords.latitude, position.coords.longitude);
+
                         //Add a marker at that pos
                         imHere = map.addMarker({
                             lat: position.coords.latitude,
                             lng: position.coords.longitude,
                             icon: me_icon
                         });
+                        //Move to location
+                        map.setCenter(position.coords.latitude, position.coords.longitude);
                     },
                     error: function(error){
                          alert('Geolocation failed: ' + error.message);
