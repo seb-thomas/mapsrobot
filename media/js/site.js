@@ -17,9 +17,14 @@ $(document).ready(function(){
             position: 'TOP_LEFT'
         },
         panControl : false,
-        streetViewControl : true,
-        mapTypeControl: false,
-        overviewMapControl: false,
+        streetViewControl : false,
+        rotateControl: true,
+        panControl: true,
+        mapTypeControl: true,
+        mapTypeControlOptions: {
+            position: 'BOTTOM_CENTER'
+        },
+        overviewMapControl: true,
     });
 
     //Get the JSON data
@@ -63,15 +68,15 @@ $(document).ready(function(){
         var marker_byob = marker.details.byob;
 
         //Check the states of checkboxes
-        if (!price_checkbox.prop('checked')) {
+        if (!price_checkbox.hasClass('active')) {
             return false;
         }
 
-        if (!$('#isByob').is(':checked') && marker_byob) {
+        if (!$('#isByob').hasClass('active') && marker_byob) {
             return false;
         }
 
-        if (!$('#isNotByob').is(':checked') && !marker_byob) {
+        if (!$('#isNotByob').hasClass('active') && !marker_byob) {
             return false;
         }
         return true;
