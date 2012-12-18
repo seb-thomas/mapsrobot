@@ -10,7 +10,7 @@ $(document).ready(function(){
         el: '#map',
         lat: 51.527145976089415,
         lng: -0.08147038015136054,
-        zoom: 13,
+        zoom: 12,
         zoomControl : true,
         zoomControlOpt: {
             style : 'SMALL',
@@ -18,13 +18,7 @@ $(document).ready(function(){
         },
         panControl : false,
         streetViewControl : false,
-        rotateControl: true,
-        panControl: true,
-        mapTypeControl: true,
-        mapTypeControlOptions: {
-            position: 'BOTTOM_CENTER'
-        },
-        overviewMapControl: true,
+        mapTypeControl: false
     });
 
     //Get the JSON data
