@@ -1,13 +1,15 @@
+@width: 100%;
+
 body {
     background: gold;
     -webkit-text-size-adjust: none;
 }
 .wrapper {
-    width: 480px;
+    width: @width;
     margin: 0 auto;
 }
 #map {
-    width: 480px;
+    width: @width;
     height: 685px;
     
     //Bootstrap/Googlemaps bug fix for infowindow
@@ -17,15 +19,14 @@ body {
 }
 
 .filters {
-    width: 460px;
+    width: 320px;
     margin: 20px auto;
     .submit {
         margin: 20px 0 0 0;
     }
 }
 
-.container {
-      width: 480px;
+.flipper_container {
       height: 685px;
       position: relative;
       margin: 0;

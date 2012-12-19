@@ -1,5 +1,11 @@
 var map;
 var MARKERS;
+var CONTROL = {
+    margin: '15px 15px 5px 0px',
+    padding: '3px 7px',
+    border: 'solid 1px #717B87',
+    background: '#fff'
+}
 
 //Define var for geolocation
 var imHere = false;
@@ -92,10 +98,10 @@ $(document).ready(function(){
         position: 'top_right',
         content: 'Find me!',
         style: {
-            margin: '5px',
-            padding: '1px 6px',
-            border: 'solid 1px #717B87',
-            background: '#fff'
+            margin: CONTROL.margin,
+            padding: CONTROL.padding,
+            border: CONTROL.border,
+            background: CONTROL.background
         },
         events: {
             click: function(){
@@ -114,8 +120,12 @@ $(document).ready(function(){
                             lng: position.coords.longitude,
                             icon: me_icon
                         });
+
                         //Move to location
                         map.setCenter(position.coords.latitude, position.coords.longitude);
+
+                        //Set Zoom
+                        map.setZoom(15);
                     },
                     error: function(error){
                          alert('Geolocation failed: ' + error.message);
@@ -132,10 +142,10 @@ $(document).ready(function(){
         position: 'top_right',
         content: 'Flip me!',
         style: {
-            margin: '5px',
-            padding: '1px 6px',
-            border: 'solid 1px #717B87',
-            background: '#fff'
+            margin: CONTROL.margin,
+            padding: CONTROL.padding,
+            border: CONTROL.border,
+            background: CONTROL.background
         },
         events: {
             click: function(){
