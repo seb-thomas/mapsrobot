@@ -26,7 +26,11 @@ $(document).ready(function(){
         panControl : false,
         streetViewControl : false,
         overviewMapControl: false,
-        mapTypeControl: false
+        mapTypeControl: false,
+        tilesloaded: function(e) {
+            //FOUC caused by prefixfree.js, i think
+            $('.back').css('display', 'block');
+        }
     });
 
     //Get the JSON data

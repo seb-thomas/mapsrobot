@@ -1,4 +1,5 @@
 @width: 100%;
+@height: 685px;
 
 body {
     background: gold;
@@ -10,7 +11,7 @@ body {
 }
 #map {
     width: @width;
-    height: 685px;
+    height: @height;
     
     //Bootstrap/Googlemaps bug fix for infowindow
     img {
@@ -19,7 +20,7 @@ body {
 }
 
 .filters {
-    @filter_width: 320px;
+    @filter_width: 280px;
     width: @filter_width;
     margin: 20px auto;
     input[type="submit"].submit {
@@ -29,7 +30,7 @@ body {
 }
 
 .flipper_container {
-    height: 685px;
+    height: @height;
     position: relative;
     margin: 0;
     perspective: 1000px;
@@ -39,7 +40,7 @@ body {
     width: 100%;
     height: 100%;
     position: absolute;
-    transition: transform 0.5s;
+    transition: transform 0.2s;
     transform-style: preserve-3d;
     &.flipped {
         transform: rotateY( 180deg );
@@ -52,7 +53,27 @@ body {
         backface-visibility: hidden;
     }
     .back {
+        display: none;
         background: rgba(100,100,100, 1);
         transform: rotateY( 180deg );
+    }
+}
+
+
+//Should be done with Guards, but I dont know how they work. yet. 
+@media only screen 
+and (max-width : 320px) {
+    @width: 320px;
+    @height: 460px;
+    background: red;
+    .wrapper {
+        width: @width;
+    }
+    #map {
+        width: @width;
+        height: @height;
+    }
+    .flipper_container {
+        height: @height;
     }
 }
