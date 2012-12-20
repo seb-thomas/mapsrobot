@@ -60,12 +60,30 @@ body {
 }
 
 
-//Should be done with Guards, but I dont know how they work. yet. 
+//Should be done with Guards, but I dont know how they work. yet.
+/* Smartphones (portrait) ----------- */
 @media only screen 
 and (max-width : 320px) {
     @width: 320px;
     @height: 460px;
-    background: red;
+    .wrapper {
+        width: @width;
+    }
+    #map {
+        width: @width;
+        height: @height;
+    }
+    .flipper_container {
+        height: @height;
+    }
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+    @height: 928px;
     .wrapper {
         width: @width;
     }
