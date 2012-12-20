@@ -1,3 +1,4 @@
+//@import "prefixer.less";
 @width: 100%;
 
 body {
@@ -30,9 +31,6 @@ body {
       height: 685px;
       position: relative;
       margin: 0;
-      -webkit-perspective: 800px;
-         -moz-perspective: 800px;
-           -o-perspective: 800px;
               perspective: 800px;
     }
 
@@ -40,20 +38,11 @@ body {
       width: 100%;
       height: 100%;
       position: absolute;
-      -webkit-transition: -webkit-transform 0.5s;
-         -moz-transition: -moz-transform 0.5s;
-           -o-transition: -o-transform 0.5s;
               transition: transform 0.5s;
-      -webkit-transform-style: preserve-3d;
-         -moz-transform-style: preserve-3d;
-           -o-transform-style: preserve-3d;
               transform-style: preserve-3d;
     }
 
     #card.flipped {
-      -webkit-transform: rotateY( 180deg );
-         -moz-transform: rotateY( 180deg );
-           -o-transform: rotateY( 180deg );
               transform: rotateY( 180deg );
     }
 
@@ -62,9 +51,6 @@ body {
       height: 100%;
       width: 100%;
       position: absolute;
-      -webkit-backface-visibility: hidden;
-         -moz-backface-visibility: hidden;
-           -o-backface-visibility: hidden;
               backface-visibility: hidden;
     }
 
@@ -74,8 +60,5 @@ body {
 
     #card .back {
       background: lightgray;
-      -webkit-transform: rotateY( 180deg );
-         -moz-transform: rotateY( 180deg );
-           -o-transform: rotateY( 180deg );
               transform: rotateY( 180deg );
     }
