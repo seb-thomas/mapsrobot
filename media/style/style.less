@@ -1,4 +1,3 @@
-//@import "prefixer.less";
 @width: 100%;
 
 body {
@@ -28,37 +27,37 @@ body {
 }
 
 .flipper_container {
-      height: 685px;
-      position: relative;
-      margin: 0;
-              perspective: 800px;
-    }
+    height: 685px;
+    position: relative;
+    margin: 0;
+    perspective: 800px;
+}
 
-    #card {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-              transition: transform 0.5s;
-              transform-style: preserve-3d;
-    }
+#card {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+}
 
-    #card.flipped {
-              transform: rotateY( 180deg );
-    }
+#card.flipped {
+    transform: rotateY( 180deg );
+}
 
-    #card > div {
-      display: block;
-      height: 100%;
-      width: 100%;
-      position: absolute;
-              backface-visibility: hidden;
-    }
+#card > div {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
 
-    #card .front {
-     // background: red;
-    }
+#card .front {
+    //background: red;
+}
 
-    #card .back {
-      background: lightgray;
-              transform: rotateY( 180deg );
-    }
+#card .back {
+    background: lightgray;
+    transform: rotateY( 180deg );
+}
