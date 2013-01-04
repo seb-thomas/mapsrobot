@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="stylesheet" href="public/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet/less" href="public/stylesheets/style.less">
+
+    <!--These scripts need to be loaded before the page-->
+    <script type="text/javascript" src="public/javascripts/libs/less-1.3.0.min.js"></script>
+    <script type="text/javascript" src="public/javascripts/libs/prefixfree.min.js"></script>
+
+    <script type="text/javascript">
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script>
+
+</head>
+<body>
+    <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+
+    <header>
+
+    </header>
+    <div class="wrapper" role="main">
+        <section class="flipper_container">
+            <div id="card" class="">
+                <div id="map" class="front"></div>
+                <div class="back">
+                    <div class="filters">
+                        <form id="filter_form" action="">
+                            <p>Price</p>
+                            <div class="btn-group" data-toggle="buttons-checkbox">
+                                <button type="button" id="budget" class="btn active">Budget</button>
+                                <button type="button" id="mid" class="btn active">Mid</button>
+                                <button type="button" id="high" class="btn active">High</button>
+                            </div>
+                            <p>Byob</p>
+                            <div class="btn-group" data-toggle="buttons-checkbox">
+                                <button type="button" id="isByob" class="btn active">byob</button>
+                                <button type="button" id="isNotByob" class="btn active">Not byob</button>
+                            </div>
+                            <input type="submit" class="submit btn btn-large btn-block" value="Filter"/></li>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <footer>
+    </footer>
+
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="javascripts/jquery-1.7.2.min.js"><\/script>')</script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="https://raw.github.com/HPNeo/gmaps/master/gmaps.js"></script>
+    <script type="text/javascript" src="public/javascripts/libs/bootstrap.min.js"></script>
+    <script type="text/javascript" src="public/javascripts/site.js"></script>
+
+</body>
+</html>
