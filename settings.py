@@ -123,7 +123,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'django.core.context_processors.tz',
     'django.contrib.messages.context_processors.messages',
-    'markers.context_processors.common',
+    'marker.context_processors.common',
 )
 
 INSTALLED_APPS = (
@@ -135,5 +135,5 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     # internal
-    'markers',
+    'marker',
 )
