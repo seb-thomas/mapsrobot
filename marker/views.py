@@ -11,4 +11,4 @@ def clean_vars(obj):
 
 def index(request):
     dump = json.dumps([clean_vars(m) for m in Marker.objects.all()])
-    return HttpResponse(dump)
+    return HttpResponse(dump, mimetype="application/json")

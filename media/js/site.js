@@ -34,9 +34,9 @@ $(document).ready(function(){
     });
 
     //Get the JSON data
-    $.getJSON('media/js/markers.json', function(data){
+    $.getJSON('marker', function(data){
         //Iterate over the javascript object data
-        MARKERS = $.map(data.markers, function(details, i){
+        MARKERS = $.map(data, function(details, i){
             //Only add the markers that pass the below checks
             return map.addMarker({
                 lat: details.latitude,
