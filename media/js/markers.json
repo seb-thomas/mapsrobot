@@ -1,26 +1,2 @@
-{"markers":[ { 
-    "pin_id": "0",
-    "latitude":51.527145976089415, 
-    "longitude": -0.08147038015136054, 
-    "name":"Meat Mission", 
-    "address":"Hoxton Square",
-    "price": "budget", 
-    "byob": true
-}, { 
-    "pin_id": "1",
-    "latitude":51.53144023349466, 
-    "longitude":-0.0802026567871561, 
-    "name":"Troy", 
-    "address":"Hoxton St",
-    "price": "mid",
-    "byob": false
-} , { 
-    "pin_id": "1",
-    "latitude":51.53144023349466, 
-    "longitude":-0.085, 
-    "name":"Troy", 
-    "address":"Hoxton St",
-    "price": "high",
-    "byob": false
-    } ]
-}
+[{"latitude": "51.527145976089415", "price_range": "mid", "id": 1, "longitude": "-0.08147038015136054"}, 
+{"latitude": "51.53144023349466", "price_range": "high", "id": 2, "longitude": "-0.08147038015136054"}]

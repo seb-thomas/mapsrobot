@@ -43,10 +43,10 @@ $(document).ready(function(){
                 lng: details.longitude,
                 animation: google.maps.Animation.DROP,
                 visible: false,
-                details: details,
+                details: details/*,
                 infoWindow: {
                     content: '<h2>' + details.name + '</h2><p>' + details.address + '</p>'
-                }
+                }*/
             });
         });
         //JSON badger don't care about doc ready, so we need to call loadMarkers specifically after the json has been got
@@ -70,8 +70,8 @@ $(document).ready(function(){
     //Said checks
     function passesFilter(marker){
         //Set vars for things we are checking
-        var price_checkbox = $('#'+marker.details.price);
-        var marker_byob = marker.details.byob;
+        var price_checkbox = $('#'+marker.details.price_range);
+        //var marker_byob = marker.details.byob;
 
         //Check the states of checkboxes
         if (!price_checkbox.hasClass('active')) {
@@ -80,13 +80,13 @@ $(document).ready(function(){
 
         //These are different because we're checking for true/false 
         //rather than against a string as for price
-        if (!$('#isByob').hasClass('active') && marker_byob) {
+/*        if (!$('#isByob').hasClass('active') && marker_byob) {
             return false;
         }
 
         if (!$('#isNotByob').hasClass('active') && !marker_byob) {
             return false;
-        }
+        }*/
         return true;
     }
 
