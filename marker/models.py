@@ -16,7 +16,11 @@ class Marker(models.Model):
     price_range = models.CharField(max_length=10,
                                       choices=PRICE_RANGE_CHOICES,
                                       default=MIDDLE)
+    name = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
+    postcode = models.CharField(max_length=10)
     latitude = models.CharField(max_length=255)
     longitude = models.CharField(max_length=255)
+    byob = models.BooleanField()
     def __unicode__(self):
-        return self.price_range
+        return self.name
