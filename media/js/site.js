@@ -43,10 +43,10 @@ $(document).ready(function(){
                 lng: details.longitude,
                 animation: google.maps.Animation.DROP,
                 visible: false,
-                details: details/*,
+                details: details,
                 infoWindow: {
-                    content: '<h2>' + details.name + '</h2><p>' + details.address + '</p>'
-                }*/
+                    content: '<h2>' + details.name + '</h2><address>' + details.address + '<br>'+ details.postcode +'<a href="tel:'+details.phone_number+'">'+details.phone_number+'</a></address>'
+                }
             });
         });
         //JSON badger don't care about doc ready, so we need to call loadMarkers specifically after the json has been got

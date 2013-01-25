@@ -19,6 +19,7 @@ class Marker(models.Model):
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
     postcode = models.CharField(max_length=10)
+    phone_number = models.CharField(max_length=15, blank=True, null=True, help_text="Inc country code (+44)")
     latitude = models.CharField(max_length=255)
     longitude = models.CharField(max_length=255)
     byob = models.BooleanField()
