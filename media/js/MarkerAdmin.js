@@ -4,8 +4,6 @@ if (jQuery != undefined) {
     }
 }
 (function($) {
-    ADRS_PC = "";
-
     $(document).ready(function() {
         $searchInput = $('<input>', {'type': 'search', 'placeholder': 'Search …', 'id': 'address', 'width': '300px'});
         $map = $('<div>', {'id': 'map', 'height': '300px'});
