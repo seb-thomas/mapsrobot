@@ -137,3 +137,8 @@ INSTALLED_APPS = (
     # internal
     'marker',
 )
+
+try:
+    from local_settings import *
+except:
+    pass
