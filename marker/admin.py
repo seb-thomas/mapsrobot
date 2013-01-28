@@ -10,5 +10,8 @@ class MarkerAdmin(admin.ModelAdmin):
         js = ('http://maps.google.com/maps/api/js?sensor=true',
             'https://raw.github.com/HPNeo/gmaps/master/gmaps.js',
             '/media/js/MarkerAdmin.js')
+        css = {
+            'all': ('/media/style/markerAdmin.css',)
+        }
 
 admin.site.register(Marker, MarkerAdmin)

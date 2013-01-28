@@ -1,0 +1,15 @@
+#address {
+    vertical-align: bottom;
+    width: 300px;
+    margin: 10px 10px 0 106px;
+}
+
+#search {
+    width: 70px;
+    height: 24px;
+}
+
+
+#map {
+    margin: 20px auto;
+}

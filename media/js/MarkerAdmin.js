@@ -5,7 +5,7 @@ if (jQuery != undefined) {
 }
 (function($) {
     $(document).ready(function() {
-        $searchInput = $('<input>', {'type': 'search', 'placeholder': 'Search …', 'id': 'address', 'width': '300px'});
+        $searchInput = $('<input>', {'type': 'search', 'placeholder': 'Search …', 'id': 'address'});
         $map = $('<div>', {'id': 'map', 'height': '300px'});
         $submit = $('<button>', {'type': 'button', 'text': 'Search', 'id': 'search'});
         $searchRow = $('.field-longitude');
