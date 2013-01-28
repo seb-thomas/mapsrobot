@@ -1,6 +1,5 @@
 import datetime
 from django.utils import timezone
-from geoposition.fields import GeopositionField
 from django.db import models
 from django.db.models import Max
 
@@ -23,6 +22,5 @@ class Marker(models.Model):
                                       choices=PRICE_RANGE_CHOICES,
                                       default=MIDDLE)
     byob = models.BooleanField()
-    position = GeopositionField()
     def __unicode__(self):
         return self.name

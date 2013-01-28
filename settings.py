@@ -136,5 +136,4 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # internal
     'marker',
-    "geoposition",
 )
