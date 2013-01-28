@@ -4,6 +4,7 @@ if (jQuery != undefined) {
     }
 }
 (function($) {
+    ADRS_PC = "";
 
     $(document).ready(function() {
         $searchInput = $('<input>', {'type': 'search', 'placeholder': 'Search …', 'id': 'address', 'width': '300px'});
@@ -22,12 +23,12 @@ if (jQuery != undefined) {
 
         function getlatLng(){
             GMaps.geocode({
-                address: $('#address').val().trim(),
+                address: $searchInput.val().trim(),
                 callback: function(results, status){
                     if(status=='OK'){
                         var latlng = results[0].geometry.location;
                         map.setCenter(latlng.lat(), latlng.lng());
-                        map.setZoom(16);
+                        map.setZoom(17);
                         map.addMarker({
                             lat: latlng.lat(),
                             lng: latlng.lng()
@@ -40,11 +41,31 @@ if (jQuery != undefined) {
         }
 
         $submit.click(getlatLng);
+
         $searchInput.bind('keydown', function(e) {
             if (e.keyCode == 13) {
                 e.preventDefault();
                 getlatLng();
             }
         });
+        $('#id_address').bind('keydown', function(e) {
+            if (e.keyCode == 13) {
+                e.preventDefault();
+                updateTotal()
+            }
+        });
+        $('#id_postcode').bind('keydown', function(e) {
+            if (e.keyCode == 13) {
+                e.preventDefault();
+                updateTotal()
+            }
+        });
+
+        var updateTotal = function () {
+            var input1 = $('#id_address').val();
+            var input2 = $('#id_postcode').val();
+            $searchInput.val(input1 + ' ' + input2);
+        };
+
     });
 })(django.jQuery);
