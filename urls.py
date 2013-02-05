@@ -5,7 +5,7 @@ from django.conf import settings
 from django.contrib import admin
 admin.autodiscover()
 
-from mapsrobot import views
+import views
 
 urlpatterns = patterns('',
     # Example:
