@@ -23,6 +23,15 @@ if (jQuery != undefined) {
             lat: 51.48425033829694,
             lng: -0.10845702578126781,
             zoom: 12,
+            click: function(e){
+                map.addMarker({
+                    lat: e.latLng.lat(),
+                    lng: e.latLng.lng(),
+                    title: 'New marker'
+                });
+                $('#id_latitude').val(e.latLng.lat());
+                $('#id_longitude').val(e.latLng.lng());
+            }
         });
 
         //The geocoding func
