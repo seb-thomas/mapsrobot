@@ -45,7 +45,7 @@ $(document).ready(function(){
                 visible: false,
                 details: details,
                 infoWindow: {
-                    content: '<h2>' + details.name + '</h2><address>' + details.address + '<br>'+ details.postcode +'<a href="tel:'+details.phone_number+'">'+details.phone_number+'</a></address>'
+                    content: '<h4 class="gm-title">' + details.name + '</h4><address>' + details.address + '<br>'+ details.postcode +'<a href="'+details.google_plus+'" class="moinfo" target="_blank">More info</a></address>'
                 }
             });
         });
